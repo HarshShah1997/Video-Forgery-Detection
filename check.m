@@ -1,43 +1,53 @@
 srno = 122;
-temp = [];
+org = [];
+count = 1;
 for srno=122:128
-    org = rgb2gray(imread('Videos/10_original/frame122.jpg'));
-subplot(2, 4, 1), imshow(org1);
+    framename = strcat('frame', int2str(srno), '.jpg');
+    temp = rgb2gray(imread(strcat('Videos/10_original/', framename)));
+    org(count, :, :) = temp;
+    count = count + 1;    
+end
+org = uint8(org);
 
-org2 = rgb2gray(imread('10_original/frame123.jpg'));
-subplot(2, 4, 2), imshow(org2);
+srno = 122;
+forg = [];
+count = 1;
+for srno=122:128
+    framename = strcat('frame', int2str(srno), '.jpg');
+    temp = rgb2gray(imread(strcat('Videos/10_forged/', framename)));
+    forg(count, :, :) = temp;
+    count = count + 1;    
+end
+forg = uint8(forg);
 
-org3 = rgb2gray(imread('10_original/frame124.jpg'));
-subplot(2, 4, 3), imshow(org3);
+%forg1 = rgb2gray(imread('10_forged/frame122.jpg'));
+%subplot(2, 4, 5), imshow(forg1);
 
-forg1 = rgb2gray(imread('10_forged/frame122.jpg'));
-subplot(2, 4, 5), imshow(forg1);
+%forg2 = rgb2gray(imread('10_forged/frame123.jpg'));
+%subplot(2, 4, 6), imshow(forg2);
 
-forg2 = rgb2gray(imread('10_forged/frame123.jpg'));
-subplot(2, 4, 6), imshow(forg2);
-
-forg3 = rgb2gray(imread('10_forged/frame124.jpg'));
-subplot(2, 4, 7), imshow(forg3);
+%forg3 = rgb2gray(imread('10_forged/frame124.jpg'));
+%subplot(2, 4, 7), imshow(forg3);
 
 %suborg = org2 - org1;
 %subforg = forg2 - forg1;
 
-temp(1, :, :) = org1;
-temp(2, :, :) = org2;
-temp(3, :, :) = org3;
-temp = uint8(temp);
-res_org = imsubtract(org2, collusion_min(temp));
+original = reshape(org(1, :, :), [size(org, 2), size(org, 3)]);
+res_org = imsubtract(original, collusion_min(org));
+subplot(1, 2, 1), imshow(res_org);
 
-figure, subplot(1, 2, 1), imshow(imadjust(res_org));
+forged = reshape(forg(1, :, :), [size(forg, 2), size(forg, 3)]);
+res_forg = imsubtract(forged, collusion_min(forg));
+subplot(1, 2, 2), imshow(res_forg);
 
-temp = [];
-temp(1, :, :) = forg1;
-temp(2, :, :) = forg2;
-temp(3, :, :) = forg3;
-temp = uint8(temp);
-res_forg = imsubtract(forg2, collusion_min(temp));
+%temp = [];
+%temp(1, :, :) = forg1;
+%temp(2, :, :) = forg2;
+%temp(3, :, :) = forg3;
+%temp = uint8(temp);
+%res_forg = imsubtract(forg2, collusion_min(temp));
 
-subplot(1, 2, 2), imshow(imadjust(res_forg));
+%subplot(1, 2, 2), imshow(imadjust(res_forg));
 
 
 %suborg = ((suborg));
