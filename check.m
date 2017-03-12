@@ -1,20 +1,19 @@
-srno = 122;
+srno = [1:6];
 org = [];
 count = 1;
-for srno=122:128
-    framename = strcat('frame', int2str(srno), '.jpg');
-    temp = rgb2gray(imread(strcat('Videos/10_original/', framename)));
+for i=1:size(srno, 2)
+    framename = strcat('frame', int2str(srno(i)), '.jpg');
+    temp = rgb2gray(imread(strcat('Videos/01_original_enc10/', framename)));
     org(count, :, :) = temp;
     count = count + 1;    
 end
 org = uint8(org);
 
-srno = 122;
 forg = [];
 count = 1;
-for srno=122:128
-    framename = strcat('frame', int2str(srno), '.jpg');
-    temp = rgb2gray(imread(strcat('Videos/10_forged/', framename)));
+for i=1:size(srno, 2)
+    framename = strcat('frame', int2str(srno(i)), '.jpg');
+    temp = rgb2gray(imread(strcat('Videos/01_forged_enc10/', framename)));
     forg(count, :, :) = temp;
     count = count + 1;    
 end
