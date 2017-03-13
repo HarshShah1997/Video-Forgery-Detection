@@ -8,7 +8,7 @@ while read p; do
         name="frame$gop.jpg"
         temp=
         newname="frame${gop}I.jpg"
-        mv $second/$name $second/$newname
+        #mv $second/$name $second/$newname
     fi
     gop=$((gop+1))
 done < output.txt

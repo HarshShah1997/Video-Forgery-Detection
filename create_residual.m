@@ -9,5 +9,5 @@ for i=1:size(srno, 2)
 end
 org = uint8(org);
 
-original = reshape(org(1, :, :), [size(org, 2), size(org, 3)]);
+original = reshape(org(idivide(count, int32(2)), :, :), [size(org, 2), size(org, 3)]);
 res = imsubtract(original, collusion_min(org));
