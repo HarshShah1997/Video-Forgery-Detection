@@ -1,25 +1,15 @@
 cover_features = [];
 stego_features = [];
 
-feature = extract_features_file('Variables/01_original.mat');  
-cover_features = [cover_features feature];
-
-feature = extract_features_file('Variables/01_forged.mat');
-stego_features = [stego_features feature];
-
-feature = extract_features_file('Variables/02_original.mat');
-cover_features = [cover_features ; feature];
-
-feature = extract_features_file('Variables/02_forged.mat');
-stego_features = [stego_features ; feature];
-
-feature = extract_features_file('Variables/03_original.mat');
-cover_features = [cover_features ; feature];
-
-feature = extract_features_file('Variables/03_forged.mat');
-stego_features = [stego_features ; feature];
-
-
+for i = 1:5
+    filename_org = strcat('Variables/0', int2str(i), '_original.mat');
+    feature = extract_features_file(filename_org);  
+    cover_features = [cover_features ; feature];
+    
+    filename_forg = strcat('Variables/0', int2str(i), '_forged.mat');
+    feature = extract_features_file(filename_forg);
+    stego_features = [stego_features ; feature];
+end
 
 
 
