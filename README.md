@@ -5,7 +5,7 @@ Detection of Object-Based Forgery in Advanced Video
 ## Dependencies ##
 1. ffmpeg
 2. MATLAB
-3. Video dataset for traning and testing (Available [here](https://sites.google.com/site/rewindpolimi/downloads/datasets/video-copy-move-forgeries-dataset))
+3. Video dataset for training and testing (Available [here](https://sites.google.com/site/rewindpolimi/downloads/datasets/video-copy-move-forgeries-dataset))
 4. JPEG toolbox (Included)
 5. CC-PEV 548 (Included)
 6. Ensemble Classifier (Included)
