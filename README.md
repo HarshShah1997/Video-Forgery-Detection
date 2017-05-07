@@ -1,6 +1,6 @@
 # Video Forgery Detection
 
-Detection of Object-Based Forgery in Advanced Video
+Detection of Object-Based Forgery in Advanced Video based on [this](Papers/(BasePaper)Video%20Forgery%20Deteciton.pdf) paper
 
 ## Dependencies ##
 1. ffmpeg
